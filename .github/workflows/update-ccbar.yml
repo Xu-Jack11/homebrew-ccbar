@@ -1,0 +1,33 @@
+name: Update CCBar cask
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify release and update cask
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update_cask.py
+      - name: Check changed cask
+        run: |
+          git diff --check
+          ruby -c Casks/xu-jack11-ccbar.rb
+      - name: Publish cask change
+        run: |
+          if git diff --quiet -- Casks/xu-jack11-ccbar.rb; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Casks/xu-jack11-ccbar.rb
+          git commit -m "chore: update CCBar cask"
+          git push

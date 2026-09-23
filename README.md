@@ -1,18 +1,16 @@
-# Xu-Jack11 Ccbar
+# CCBar Homebrew tap
 
-## How do I install these formulae?
+Install the official [CCBar](https://github.com/nanvon/cc-bar) macOS app with a personal Homebrew cask:
 
-`brew install xu-jack11/ccbar/<formula>`
-
-Or `brew tap xu-jack11/ccbar` and then `brew install <formula>`.
-
-Or, in a `brew bundle` `Brewfile`:
-
-```ruby
-tap "xu-jack11/ccbar"
-brew "<formula>"
+```sh
+brew install --cask xu-jack11/ccbar/xu-jack11-ccbar
 ```
 
-## Documentation
+To upgrade when a new cask version is published:
 
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+```sh
+brew update
+brew upgrade --cask xu-jack11/ccbar/xu-jack11-ccbar
+```
+
+The daily GitHub Actions workflow checks CCBar's official latest release, verifies the ZIP against GitHub's published SHA-256, and commits a version update when one is available. `brew update` fetches that changed cask; `brew upgrade` installs it. The cask installs only `CCBar.app` and does not remove user settings or usage data.
