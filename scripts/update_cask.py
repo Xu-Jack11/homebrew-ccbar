@@ -23,7 +23,7 @@ SHA_LINE = re.compile(r'^  sha256 "([0-9a-f]{64})"$', re.MULTILINE)
 def fetch(url):
     headers = {"User-Agent": "xu-jack11-homebrew-ccbar"}
     token = os.environ.get("GITHUB_TOKEN")
-    if token:
+    if token and url.startswith("https://api.github.com/"):
         headers["Authorization"] = f"Bearer {token}"
     request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=60) as response:
