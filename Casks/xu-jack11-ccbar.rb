@@ -1,6 +1,6 @@
 cask "xu-jack11-ccbar" do
-  version "1.1.46"
-  sha256 "5df46209ea0d041c39a0fbdb64a0d5c9e047235b421aeb0b9f552e256a90d27e"
+  version "1.1.47"
+  sha256 "5b5b7a0babb9898ff8505fa491847ac2727eaf11f5ffc2c4cf7a1401cae3b28b"
 
   url "https://github.com/nanvon/cc-bar/releases/download/v#{version}/CCBar.app.zip"
   name "CCBar"
